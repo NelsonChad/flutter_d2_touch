@@ -97,12 +97,17 @@ class _LoginViewState extends State<LoginView> {
                     urlController.text,
                   );*/
 
-
                   login2(
+                    "android",
+                    "Dev2023?**",
+                    "https://sicaj.hisplp.org/sisc",
+                  );
+
+                  /*login2(
                     "admin",
                     "district",
                     "https://play.dhis2.org/2.38.6",
-                  );
+                  );*/
                 },
                 child: const Text("Login"),
               ),
@@ -131,6 +136,7 @@ class _LoginViewState extends State<LoginView> {
               MaterialPageRoute(builder: (context) => const HomeView()),
             );
           }
+          return null;
         },
       );
 

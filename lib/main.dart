@@ -1,5 +1,4 @@
 import 'package:d2_touch/d2_touch.dart';
-import 'package:dhis2_flutter/ui/login.dart';
 import 'package:dhis2_flutter/ui/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'main.reflectable.dart';

@@ -1,5 +1,6 @@
 import 'package:d2_touch/modules/metadata/program/entities/program.entity.dart';
 import 'package:dhis2_flutter/main.dart';
+import 'package:dhis2_flutter/ui/program.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,13 +18,14 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     getProfile();
+    getPrograms();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("HOME PAGE - (${programs.length}) programs")),
+      appBar: AppBar(title: Text("HOME - (${programs.length}) programs")),
       body: Column(
         children: [
           Container(
@@ -48,28 +50,6 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
           ),
-          Container(
-            color: Colors.green,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    downloadTEIS();
-                    //downloadProgram('yIbORstm9tF');
-                  },
-                  child: const Text("Download Trackers"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    getPrograms();
-                  },
-                  child: const Text("Get Trackers"),
-                ),
-              ],
-            ),
-          ),
           SizedBox(
             height: MediaQuery.of(context).size.height - 200,
             child: ListView.builder(
@@ -86,13 +66,17 @@ class _HomeViewState extends State<HomeView> {
                         color: Colors.blue,
                       ),
                       horizontalTitleGap: 5.0,
-
-                      // Add onTap if you want to handle tap events on each item
-                      // onTap: () {
-                      //   // Handle onTap event
-                      // },
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProgramScreeen(program: program),
+                          ),
+                        );
+                      },
                     ),
-                    const Divider(color: Colors.grey,height: 2),
+                    const Divider(color: Colors.grey, height: 2),
                     const SizedBox(height: 5)
                   ],
                 );
@@ -151,7 +135,8 @@ class _HomeViewState extends State<HomeView> {
   // See the response in console
   Future<void> getPrograms() async {
     try {
-      List<Program> fetchedPrograms = await d2repository.programModule.program.get();
+      List<Program> fetchedPrograms =
+          await d2repository.programModule.program.get();
       setState(() {
         programs = fetchedPrograms;
       });
