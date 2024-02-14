@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+d2_touch-1.1.2/
 
 # IntelliJ related
 *.iml

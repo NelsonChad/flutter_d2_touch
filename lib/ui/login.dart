@@ -91,10 +91,17 @@ class _LoginViewState extends State<LoginView> {
             Center(
               child: TextButton(
                 onPressed: () {
-                  login2(
+                  /*login2(
                     usernameController.text,
                     passwordController.text,
                     urlController.text,
+                  );*/
+
+
+                  login2(
+                    "admin",
+                    "district",
+                    "https://play.dhis2.org/2.38.6",
                   );
                 },
                 child: const Text("Login"),
@@ -138,35 +145,3 @@ class _LoginViewState extends State<LoginView> {
     }
   }
 }
-
-
-  /*return TextFormField(
-    enabled: isEnabled ?? true,
-    obscureText: isPassword ?? false,
-    controller: nameController,
-    keyboardType: Keytype,
-    //focusNode: focusNode,
-    textAlign: textAlign ?? TextAlign.left,
-    decoration: InputDecoration(
-      prefixIcon: prefixIcon,
-      labelText: hintText,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-      fillColor: Colors.grey[200],
-      filled: true,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: const BorderSide(
-          color: Colors.white,
-          width: 1.0,
-        ),
-      ),
-    ),
-    inputFormatters: maskFormatter != null ? [maskFormatter] : [],
-    validator: (value) {
-      if (value == null || value.isEmpty) {
-        return 'Por favor preencha o campo correctamente.';
-      }
-      return null;
-    },
-  );
-}*/

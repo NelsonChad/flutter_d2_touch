@@ -1,5 +1,6 @@
 import 'package:d2_touch/d2_touch.dart';
 import 'package:dhis2_flutter/ui/login.dart';
+import 'package:dhis2_flutter/ui/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'main.reflectable.dart';
 
@@ -7,7 +8,7 @@ late D2Touch d2repository;
 void main() async {
   initializeReflectable();
   WidgetsFlutterBinding.ensureInitialized();
-  d2repository = await D2Touch.init(databaseName: "dhis2_db");
+  d2repository = await D2Touch.init();
 
   runApp(const MyApp());
 }
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginView(),
+      home: const SplashScreen(),
     );
   }
 }
